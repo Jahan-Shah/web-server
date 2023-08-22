@@ -1,3 +1,39 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+
+  max-width: 650px;
+  margin: 0 auto;
+  padding-inline: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main__content {
+  flex-grow: 1;
+}
+
+header {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+header a {
+  color: #888;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
 h1 {
-  color: red;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+footer {
+  color: #888;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+  padding-inline: 1rem;
 }

@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-
+const forecast = require("./utils/forecast");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -11,24 +11,27 @@ app.get("", (req, res) => {
   res.render("index.ejs", {
     title: "Weather App",
     name: "Shah Jahan",
+    credit: "Shah Jahan",
   });
 });
 
-app.get("/help", (req, res) => {
-  res.send("Help page");
-});
-
-app.get("/about", (req, res) => {
-  res.send("<h1>About</h1>");
-});
-
 app.get("/weather", (req, res) => {
-  res.send([
-    {
-      Location: "Faisalabad",
-      Forcast: "sunny",
-    },
-  ]);
+  if (!req.query.address) {
+    return res.send({
+      error: "You must provide an address",
+    });
+  }
+
+  forecast(req.query.address, (error, { location, status } = {}) => {
+    if (error) {
+      return res.send({ error });
+    }
+    res.send({
+      location: location,
+      forcast: status,
+      address: req.query.address,
+    });
+  });
 });
 
 app.listen(3000, () => {
