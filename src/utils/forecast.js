@@ -6,7 +6,7 @@ module.exports = forecast = (address, callback) => {
     address
   )}`;
 
-  request({ url: URL, json: true }, (err, { body }) => {
+  request({ url: URL, json: true }, (err, { body } = {}) => {
     if (err) callback("Unable to connect to weather service!", undefined);
     else if (body.error) {
       callback("Unable to find the locations", undefined);
