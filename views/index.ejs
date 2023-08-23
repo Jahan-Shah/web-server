@@ -5,6 +5,13 @@
     <div class="main__content">
       <%- include('./partials/header.ejs') %>
       <p>Use this site to get your weather!</p>
+      <form action="">
+        <input type="text" name="location" placeholder="Location" />
+        <button type="submit">Search</button>
+      </form>
+      <p id="location"></p>
+      <p id="forecast"></p>
+      <p id="errorMessage"></p>
     </div>
     <%- include('./partials/footer.ejs')%>
   </body>
